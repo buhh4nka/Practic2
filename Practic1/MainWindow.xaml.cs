@@ -31,12 +31,9 @@ namespace Practic1
         
         private void startProgramm_Click(object sender, RoutedEventArgs e)
         {
-            bool isNotError = Int32.TryParse(amountOfNumbers.Text, out int arrayLenght);
-
-    
-
-            if (isNotError && arrayLenght > 0)
+            try
             {
+                int arrayLenght = Convert.ToInt32(amountOfNumbers.Text);
                 _numberArray = new int[arrayLenght];
                 
                 Practice.multuplicationOfNumbers(arrayLenght, out int result, out _numberArray) ;
@@ -62,7 +59,7 @@ namespace Practic1
                 }
                 allRandomNumbers.Text = allNumbers;
             }
-            else
+            catch
             {
                 MessageBox.Show("Число введено неверно. \nВведите другое значение.", "Ошибка");
                 amountOfNumbers.Clear();
